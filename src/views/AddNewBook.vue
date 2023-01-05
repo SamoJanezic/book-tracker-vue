@@ -1,20 +1,24 @@
 <template>
 	<h3>Here you can add a new book</h3>
-  <form>
-		<label>Title: </label>
+  <form class="grid-container">
+		<label class="grid-item grid-item-1">Title: </label>
 		<input type="text" v-model="book.title" /> <br>
-    <label>Author: </label>
+
+    <label class="grid-item grid-item-1">Author: </label>
     <input type="text" v-model="book.author" /><br>
-    <label>Pages: </label>
+
+    <label class="grid-item grid-item-1">Pages: </label>
     <input type="text" v-model="book.pages" /><br>
-    <label>Publisher: </label>
+
+    <label class="grid-item grid-item-1">Publisher: </label>
     <input type="text" v-model="book.publisher" /><br>
-    <label>Publication year: </label>
+
+    <label class="grid-item grid-item-1">Publication year: </label>
     <input type="text" v-model="book.publicationYear" /><br>
-    <label>Image url: </label>
+    
+    <label class="grid-item grid-item-1">Image url: </label>
     <input type="text" v-model="book.image" />
 	</form>
-  <div>{{ book.title }}</div>
   <button @click="showInput">Add Book</button>
 </template>
 

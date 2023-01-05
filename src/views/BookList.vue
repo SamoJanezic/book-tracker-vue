@@ -27,7 +27,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import './App.css';
+  import './BookList.css';
 
   export default defineComponent({
     data() {
