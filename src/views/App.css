@@ -1,0 +1,37 @@
+.table-image {
+  height: 14vh;
+}
+
+.image-container {
+  padding:0;
+}
+
+table {
+  font-size:medium;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  border-bottom: 2px solid black;;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr:hover {
+background-color: rgba(0, 0, 0, 0.07);
+}
+
+span {
+  cursor:pointer;
+  color:blue;
+  text-decoration:underline;
+}
