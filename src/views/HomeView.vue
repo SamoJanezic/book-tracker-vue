@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img class="book-img" alt="Vue logo" src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
+
 </template>
 
 <script lang="ts">
@@ -16,3 +17,8 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+  .book-img {
+    max-height: 200px;
+  }
+</style>
