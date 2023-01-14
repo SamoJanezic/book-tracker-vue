@@ -1,4 +1,5 @@
 <template>
+
   <table>
     <tr>
       <th></th>
@@ -23,15 +24,18 @@
       </td>
     </tr>
   </table>
+  <button @click="getItem">Get Item</button>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
   import './BookList.css';
-
+  
   export default defineComponent({
     data() {
       return {
+        
+        axios: require('axios'),
         books: [
           {
             id: 0,
@@ -75,6 +79,21 @@
         ],
       };
     },
-    methods: {},
+    methods: {
+      getItem() {
+        this.axios.get('https://127.0.0.1:49178/')
+          .then(function (response: object) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error:string) {
+          // handle error
+          console.log(error);
+        })
+        // .then(function () {
+        //   // always executed
+        // });
+      }
+    },
   });
 </script>
