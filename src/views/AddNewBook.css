@@ -1,0 +1,10 @@
+.form-container {
+	flex-flow: column wrap;
+	justify-content: space-between;
+}
+
+.item {
+	width: 50px;
+	display: flex;
+	margin-left: 100px;
+}
