@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex-container">
+    <nav class="flex-container main">
       <router-link class="link-btn" to="/">Home</router-link>
       <router-link class="link-btn" to="/book-list">Book List</router-link>
       <router-link class="link-btn" to="/add-book">Add Book</router-link>
@@ -29,22 +29,21 @@ nav a.router-link-exact-active {
   color: #000000;
 }
 
-.flex-container {
+/* .flex-container {
   display: flex;
   flex-direction: row;
-  /* background-color: rgb(205, 233, 242); */
   align-items: flex-end;
   padding-bottom: 12px;
-  background-color: rgb(0, 0, 0);
-}
+} */
 
 .link-btn {
   padding: 5px 20px;
   margin: 0px 18px;
   background-color: rgba(255, 240, 240, 0.633);
-  border: 2px solid black;
-  border-radius: 0px 0px;
+  border: 2px solid rgb(146, 141, 141);
+  border-radius: 10px 10px;
   transition: 350ms ease-in-out;
+  color: rgb(146, 141, 141);
 }
 
 .link-btn:hover {
@@ -53,4 +52,17 @@ nav a.router-link-exact-active {
   background-color: lightblue;
 }
 
+nav.main {
+  height: 20px;
+  /* position: fixed; */
+  box-shadow: 0px 0px 20px rgb(200, 219, 189) inset;
+  transition: .10s linear all;
+  padding: 30px 0px 20px 0px;
+  /* width: 100vw; */
+  
+}
+
+nav:hover {
+  box-shadow: 0px 0px 70px rgb(200, 219, 189) inset;
+}
 </style>

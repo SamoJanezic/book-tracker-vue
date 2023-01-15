@@ -39,47 +39,7 @@ export default defineComponent({
 	data() {
 		return {
 			loading: true,
-			books: [
-				// {
-				// 	id: 0,
-				// 	title: 'The Blade Itself',
-				// 	author: 'Joe Abercrombie',
-				// 	pages: 672,
-				// 	publisher: 'Tor Books',
-				// 	publicationYear: 2006,
-				// 	image:
-				// 		'https://www.gollancz.co.uk/wp-content/uploads/2018/07/hbg-title-9780575089914-669.jpg?fit=442%2C675',
-				// },
-				// {
-				// 	id: 1,
-				// 	title: 'Mistborn: the Final Empire',
-				// 	author: 'Brandon Sanderson',
-				// 	pages: 560,
-				// 	publisher: 'Gollancz',
-				// 	publicationYear: 2006,
-				// 	image:
-				// 		'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1284167912l/944073.jpg',
-				// },
-				// {
-				// 	id: 2,
-				// 	title: 'Gardens of the Moon',
-				// 	author: 'Steven Erikson',
-				// 	pages: 712,
-				// 	publisher: 'Bantam',
-				// 	publicationYear: 1999,
-				// 	image: 'https://mpd-biblio-covers.imgix.net/9780765348784.jpg?w=900',
-				// },
-				// {
-				// 	id: 3,
-				// 	title: '1984',
-				// 	author: 'George Orwell',
-				// 	pages: 328,
-				// 	publisher: 'Secker & Warburg',
-				// 	publicationYear: 1948,
-				// 	image:
-				// 		'https://images.booksense.com/images/935/262/9780452262935.jpg',
-				// },
-			],
+			books: [],
 		};
 	},
 	methods: {
