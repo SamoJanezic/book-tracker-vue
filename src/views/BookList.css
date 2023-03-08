@@ -1,5 +1,6 @@
 .table-image {
   height: 14vh;
+  max-height: 98px;
 }
 
 .image-container {
@@ -22,12 +23,22 @@ td, th {
   padding: 8px;
 }
 
+/* tr{
+  height: 20px;
+} */
+
 tr:nth-child(even) {
   background-color: #dddddd;
 }
 
 tr:hover {
-background-color: rgba(0, 0, 0, 0.07);
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.listBtn {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
 }
 
 /* span {

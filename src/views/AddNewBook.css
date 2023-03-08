@@ -1,20 +1,19 @@
 #add-book {
 	display: flex;
 	justify-content: space-around;
-	
 }
 
 .form-container {
-	align-items: baseline;
-	flex-flow: column wrap;
-	justify-content: space-between;
+	align-items:baseline;
+	flex-flow: column;
+	justify-content: space-evenly;
 	width: 70vw;
 }
 
 .item {
-	width: 50px;
+	width: 15vw;
 	display: flex;
-	margin-left: 5vw;
+	/* margin-left: 5vw; */
 	justify-content: baseline;
 }
 

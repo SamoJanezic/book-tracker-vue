@@ -10,7 +10,7 @@
         <input type="text" v-model="book.author" /><br>
 
         <label class="item">Description:  </label>
-        <textarea type="text" v-model="book.desctription" /><br>
+        <textarea type="text" v-model="book.description" /><br>
 
         <label class="item">Pages: </label>
         <input type="number" v-model="book.pages" /><br>
@@ -45,6 +45,7 @@ export default defineComponent({
         title: '',
         author: '',
         pages: '',
+        description: '',
         publisher: '',
         publicationYear: '',
         image: ''

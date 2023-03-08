@@ -14,7 +14,7 @@
 				<th>Image</th>
 			</tr>
 			<tr v-for="book in books" :key="book.id">
-				<td><span>edit</span> | <span>delete</span></td>
+				<td><span class="listBtn" @click="showItem">edit</span> | <span class="listBtn" @click="deleteItem(book.id, this.books)">delete</span></td>
 				<td>{{ book.id }}</td>
 				<td>{{ book.title }}</td>
 				<td>{{ book.series }}</td>
@@ -46,19 +46,38 @@ export default defineComponent({
 		changeStatus() {
 			this.loading = false;
 		},
-		getItem(items: any) {
+		showItem() {
+			console.log(this.books);
+		},
+		addBook(title, author, description, pages, publisher, publicationYear, image, series) {
+			axios.post(`https://booklist.ddev.site/book/add?title=${title}&author=${author}&description=${description}&pages=${pages}&publisher=${publisher}&publicationYear=${publicationYear}&image=${image}&series=${series}`)
+			.catch((error: string) => {
+				console.log(`There was an error POSTING the book: ${error}`)
+			});
+		},
+		deleteItem(id: number, items: object) {
+			this.books = [];
 			axios
-				.get('https://127.0.0.1:49178/json')
-				.then(function (response: any) {
-					// handle success
+				.get(`https://booklist.ddev.site/book/delete?id=${id}`)
+				.then((response) => {
+					this.getBooks(this.books);
+				})
+				// .then(this.getBooks(this.books))
+				.catch((error: string) => {
+					console.log(`There was an error DELETING the book: ${error}`);
+				});
+		},
+		getBooks(items: any) {
+			axios
+				.get('https://booklist.ddev.site/book/list')
+				.then((response: any) => {
 					const data = response.data;
-					const recieved = Object.values(data).map((val) => {
+					Object.values(data).forEach((val) => {
 						items.push(val);
 					});
 				})
-				.catch(function (error: string) {
-					// handle error
-					console.log(error);
+				.catch((error: string) => {
+					console.log(`There was an error GETTING the list: ${error}`);
 				})
 				.then(() => {
 					this.loading = false;
@@ -66,7 +85,7 @@ export default defineComponent({
 		},
 	},
 	mounted() {
-		this.getItem(this.books);
+		this.getBooks(this.books);
 	},
 });
 </script>
