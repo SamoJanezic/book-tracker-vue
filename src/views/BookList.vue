@@ -1,31 +1,49 @@
 <template>
 	<span v-if="loading">...Loading</span>
 	<div v-else>
-		<table>
-			<tr>
-				<th></th>
-				<th>ID</th>
-				<th>Title</th>
-				<th>Series</th>
-				<th>Author</th>
-				<th>Pages</th>
-				<th>Publisher</th>
-				<th>Publication year</th>
-				<th>Image</th>
-			</tr>
-			<tr v-for="book in books" :key="book.id">
-				<td><span class="listBtn" @click="showItem">edit</span> | <span class="listBtn" @click="deleteItem(book.id, this.books)">delete</span></td>
-				<td>{{ book.id }}</td>
-				<td>{{ book.title }}</td>
-				<td>{{ book.series }}</td>
-				<td>{{ book.author }}</td>
-				<td>{{ book.pages }}</td>
-				<td>{{ book.publisher }}</td>
-				<td>{{ book.publicationYear }}</td>
-				<td class="image-container">
-					<img class="table-image" :src="book.image" alt="Book Image" />
-				</td>
-			</tr>
+		<table class="mainTable">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Series</th>
+					<th>Author</th>
+					<th>Pages</th>
+					<th>Publisher</th>
+					<th>Publication year</th>
+					<th>Image</th>
+				</tr>
+			</thead>
+			<tbody v-for="book, idx in books" :key="idx" class="contentBox">
+				<tr class="contentRow">
+					<td><span class="listBtn" @click="showItem">edit</span> | <span class="listBtn" @click="deleteItem(book.id)">delete</span></td>
+					<td>{{ book.id }}</td>
+					<td>{{ book.title }}</td>
+					<td>
+						{{ book.description.substr(0, 45) }}...
+						[<span
+						class="listBtn"
+						@click="showDescription(idx)">show more</span>]
+					</td>
+					<td>{{ book.series }}</td>
+					<td>{{ book.author }}</td>
+					<td>{{ book.pages }}</td>
+					<td>{{ book.publisher }}</td>
+					<td>{{ book.publicationYear }}</td>
+					<!-- :class="{descBox: 'book.show'}" -->
+					<td class="image-container">
+						<img class="table-image" :src="book.image" alt="Book Image" />
+					</td>
+				</tr>
+				<!-- <tr class="descBox" :class="{'descBoxSee': book.show}"> -->
+				<tr v-if="book.show" class="descBox">
+
+					<td colspan="2"><b>description:</b></td>
+					<td colspan="8" class="desc">{{ book.description }}</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </template>
@@ -43,6 +61,10 @@ export default defineComponent({
 		};
 	},
 	methods: {
+		showDescription(idx: number) {
+			//! Needs tidying
+			this.books[idx].show == false ? this.books[idx].show = true : this.books[idx].show = false;
+		},
 		changeStatus() {
 			this.loading = false;
 		},
@@ -55,29 +77,27 @@ export default defineComponent({
 				console.log(`There was an error POSTING the book: ${error}`)
 			});
 		},
-		deleteItem(id: number, items: object) {
+		deleteItem(id: number) {
 			this.books = [];
 			axios
 				.get(`https://booklist.ddev.site/book/delete?id=${id}`)
-				.then((response) => {
-					this.getBooks(this.books);
-				})
-				// .then(this.getBooks(this.books))
+				.then(this.getBooks(() => this.books))
 				.catch((error: string) => {
-					console.log(`There was an error DELETING the book: ${error}`);
+					console.log(`DELETE err: ${error}`);
 				});
 		},
-		getBooks(items: any) {
+		getBooks(items) {
 			axios
 				.get('https://booklist.ddev.site/book/list')
-				.then((response: any) => {
+				.then((response) => {
 					const data = response.data;
-					Object.values(data).forEach((val) => {
+					Object.values(data).forEach((val, idx) => {
 						items.push(val);
+						this.books[idx].show = false;
 					});
 				})
 				.catch((error: string) => {
-					console.log(`There was an error GETTING the list: ${error}`);
+					console.log(`GET err =  ${error}`);
 				})
 				.then(() => {
 					this.loading = false;

@@ -6,6 +6,9 @@
         <label class="item">Title: </label>
         <input type="text" v-model="book.title" /> <br>
 
+        <label class="item">Series: </label>
+        <input type="text" v-model="book.series" /><br>
+
         <label class="item">Author: </label>
         <input type="text" v-model="book.author" /><br>
 

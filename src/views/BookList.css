@@ -1,6 +1,6 @@
 .table-image {
-  height: 14vh;
-  max-height: 98px;
+  height: 13vh;
+  /* max-height: 98px; */
 }
 
 .image-container {
@@ -8,10 +8,11 @@
 }
 
 table {
-  font-size:medium;
+  font-size: medium;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  table-layout: auto;
 }
 
 th {
@@ -21,18 +22,29 @@ th {
 td, th {
   text-align: left;
   padding: 8px;
+  /* max-width: 120px;; */
 }
 
-/* tr{
-  height: 20px;
-} */
+.contentBox {
+  /* height: 150px; */
+}
 
-tr:nth-child(even) {
+.contentBox:nth-child(even) {
   background-color: #dddddd;
 }
 
-tr:hover {
+.contentBox:hover {
   background-color: rgba(0, 0, 0, 0.07);
+}
+
+.descBoxSee {
+  visibility: collapse;
+  /* text-align: center; */
+}
+
+.desc{
+  text-align: center;
+  /* padding: 0 10vw; */
 }
 
 .listBtn {
@@ -41,8 +53,5 @@ tr:hover {
   color: blue;
 }
 
-/* span {
-  cursor:pointer;
-  color:blue;
-  text-decoration:underline;
-} */
+.contentRow {
+}
